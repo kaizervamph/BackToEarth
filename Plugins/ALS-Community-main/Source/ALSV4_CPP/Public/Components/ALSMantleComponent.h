@@ -14,6 +14,7 @@
 
 #include "ALSMantleComponent.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMantleStatus, bool, Active);
 
 UCLASS(Blueprintable, BlueprintType)
 class ALSV4_CPP_API UALSMantleComponent : public UActorComponent
@@ -49,6 +50,9 @@ public:
 	/** Implement on BP to get correct mantle parameter set according to character state */
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "ALS|Mantle System")
 	FALSMantleAsset GetMantleAsset(EALSMantleType MantleType, EALSOverlayState CurrentOverlayState);
+
+	UPROPERTY(BlueprintAssignable)
+	FMantleStatus MantleDelegate;
 
 protected:
 	// Called when the game starts

@@ -36,7 +36,9 @@ public:
 	void DrawDebugTargets(FVector PivotTargetLocation);
 
 protected:
-	virtual void UpdateViewTargetInternal(FTViewTarget& OutVT, float DeltaTime) override;
+
+	
+	//virtual void UpdateViewTargetInternal(FTViewTarget& OutVT, float DeltaTime);
 
 	UFUNCTION(BlueprintCallable, Category = "ALS|Camera")
 	static FVector CalculateAxisIndependentLag(

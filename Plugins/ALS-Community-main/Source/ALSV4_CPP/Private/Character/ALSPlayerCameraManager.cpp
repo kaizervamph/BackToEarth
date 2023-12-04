@@ -57,24 +57,7 @@ float AALSPlayerCameraManager::GetCameraBehaviorParam(FName CurveName) const
 	return 0.0f;
 }
 
-void AALSPlayerCameraManager::UpdateViewTargetInternal(FTViewTarget& OutVT, float DeltaTime)
-{
-	// Partially taken from base class
 
-	if (OutVT.Target)
-	{
-		FVector OutLocation;
-		FRotator OutRotation;
-		float OutFOV;
-
-		if (CustomCameraBehavior(DeltaTime, OutLocation, OutRotation, OutFOV))
-		{
-			OutVT.POV.Location = OutLocation;
-			OutVT.POV.Rotation = OutRotation;
-			OutVT.POV.FOV = OutFOV;
-		}
-	}
-}
 
 FVector AALSPlayerCameraManager::CalculateAxisIndependentLag(FVector CurrentLocation, FVector TargetLocation,
                                                              FRotator CameraRotation, FVector LagSpeeds,
