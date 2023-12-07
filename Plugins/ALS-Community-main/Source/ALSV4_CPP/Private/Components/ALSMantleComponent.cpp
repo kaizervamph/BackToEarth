@@ -15,6 +15,7 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Library/ALSMathLibrary.h"
 
+
 UALSMantleComponent::UALSMantleComponent()
 {
 	PrimaryComponentTick.bCanEverTick = true;
@@ -78,7 +79,6 @@ void UALSMantleComponent::MantleStart(float MantleHeight, const FALSComponentAnd
 	if (MantleType != EALSMantleType::LowMantle && OwnerCharacter->IsA(AALSCharacter::StaticClass()))
 	{
 		Cast<AALSCharacter>(OwnerCharacter)->ClearHeldObject();
-		
 	}
 
 	// Disable ticking during mantle
@@ -139,7 +139,6 @@ void UALSMantleComponent::MantleStart(float MantleHeight, const FALSComponentAnd
 		                                                    EMontagePlayReturnType::MontageLength,
 		                                                    MantleParams.StartingPosition, false);
 	}
-	MantleDelegate.Broadcast(true);
 }
 
 bool UALSMantleComponent::MantleCheck(const FALSMantleTraceSettings& TraceSettings, EDrawDebugTrace::Type DebugType)
@@ -351,7 +350,6 @@ void UALSMantleComponent::MantleEnd()
 
 	// Enable ticking back after mantle ends
 	SetComponentTickEnabledAsync(true);
-	MantleDelegate.Broadcast(false);
 }
 
 void UALSMantleComponent::OnOwnerJumpInput()
